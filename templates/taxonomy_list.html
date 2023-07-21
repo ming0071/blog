@@ -1,0 +1,40 @@
+{% extends "base.html" %} 
+{% block title %}{{ config.title }} - All {{ taxonomy.name }}{% endblock title %} 
+{% block ogtitle %}{{ config.title }} - All {{ taxonomy.name }}{% endblock ogtitle %}
+{% block description %}All {{ taxonomy.name }}{% endblock description %}
+{% block ogdesc %}All {{ taxonomy.name }}{% endblock ogdesc %}
+{% block ogurl %}{{ config.base_url }}/{{ taxonomy.name }}{% endblock ogurl %}
+
+{% block main %}
+<div class="element">
+
+  <header id="overview">
+    <div class="pt">
+      <span>&gt;&gt;</span>
+      <a href="{{ get_url(path="@/_index.md") }}">{{trans(key="label_home")}}</a>
+      {% if term.name -%}
+      <span class="divider"> / </span> {{ term.name }}
+      {% endif -%}
+      </div>
+  </header>
+  <section>
+    <div class="page-header">
+      <h1>All {{ taxonomy.name }}</h1>
+    </div>
+    <ul class="root-ul">
+      {% for category in terms %}
+        <h2 style="margin-left: -2.5rem"><a class="no-underline" href="{{ category.permalink }}">{{ category.name }}</a> ({{
+        category.pages | length }})</h2>
+        {% for year, posts in category.pages | group_by(attribute="year") %}
+        <h3>{{ year }}</h3>
+        <ul style="margin-left: -2.5rem">
+          {% for post in posts %}
+          <li>{{ macro::post_min(page=post) }}</li>
+          {% endfor %}
+        </ul>
+        {% endfor %}
+      {% endfor %}
+    </ul>
+  </section>
+</div>
+{% endblock main %}

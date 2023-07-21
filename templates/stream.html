@@ -1,0 +1,59 @@
+{% extends "base.html" -%}
+{% block post_meta-%}
+<meta name="title" content="{{ page.title }}">
+<style>
+  .sidebar{
+    display: block;
+  }
+  @media (min-width: 52rem) {
+    .sidebar{
+      display: block;
+    }
+  }
+</style>
+{% endblock post_meta -%}
+{% block title %}{{ page.title }} - {{ config.title}}{% endblock title %}
+{% block ogtitle %}{{ page.title }} - {{ config.title}}{% endblock ogtitle %}
+{% block ogdesc %}{% if page.description %} {{ page.description }} {% elif page.summary%} {{page.summary | spaceless | striptags}}  {% endif %}{% endblock ogdesc %}
+{% block description %}{% if page.description %} {{ page.description }} {% elif page.summary%} {{page.summary | spaceless | striptags}}  {% endif %}{% endblock description %}
+{% block ogurl %}{% if page.path %}{{ config.base_url }}{{ page.path }} {% endif %}{% endblock ogurl %}
+{% block ogimg %}{% if page.extra.image %}{{ page.extra.image }}{% endif %}{% endblock ogimg %}
+{% block main %}
+<div class= "element" >
+      {% block detail_meta -%}
+      <header id="overview">        
+        <div>
+          <h1>{% block detail_meta_slot %}{% endblock detail_meta_slot %}{{ page.title }}</h1>
+          <div class="muted" style="display: flex;">
+            <span>Exploring my thoughts</span>
+            <span>{{ config.extra.author }}</span>
+          </div>
+        </div>
+      </header>
+      {% endblock detail_meta -%}
+      <section data-pagefind-body>
+        <section class="main">
+          <section id="start"></section>
+          <article>
+            {{ page.content | safe }}
+          </article>
+        </section>
+      </section>
+      {% block outro %}
+      {% if config.extra.email %}
+      <hr>
+      <br>
+      <section id="contact">
+      <div id="email-comment" class="muted text-sm">
+        <p style="margin-left: 0;">
+        如果你想回覆或討論特定的某一則 Stream ，歡迎提到它的編號，並且可以<a class="muted" href="mailto:{{ trans(key='label_mail') }}?subject={{'回覆：'~page.title | urlencode }}">來信</a>到：<code>{{ trans(key="label_mail")}}</code> 跟我分享！
+        </p>
+      </div>
+      </section>
+      {% endif %}
+      {% endblock outro %}
+</div>
+{% endblock main%}
+
+{% block sidebar %}
+{% endblock sidebar %}

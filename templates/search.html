@@ -1,0 +1,124 @@
+{% extends "base.html" -%}
+{% block post_meta-%}
+<meta name="title" content="{{ page.title }}">
+<style>
+  .sidebar{
+    display: block;
+  }
+  @media (min-width: 52rem) {
+    .sidebar{
+      display: block;
+    }
+  }
+</style>
+{% endblock post_meta -%}
+{% block title %}{{ page.title }} - {{ config.title}}{% endblock title %}
+{% block ogtitle %}{{ page.title }} - {{ config.title}}{% endblock ogtitle %}
+{% block ogdesc %}{% if page.description %} {{ page.description }} {% elif page.summary%} {{page.summary | spaceless | striptags}}  {% endif %}{% endblock ogdesc %}
+{% block description %}{% if page.description %} {{ page.description }} {% elif page.summary%} {{page.summary | spaceless | striptags}}  {% endif %}{% endblock description %}
+{% block ogurl %}{% if page.path %}{{ config.base_url }}{{ page.path }} {% endif %}{% endblock ogurl %}
+{% block ogimg %}{% if page.extra.image %}{{ page.extra.image }}{% endif %}{% endblock ogimg %}
+{% block main %}
+<div class="element">
+      <section>
+      
+        <section class="main">
+          <section id="start"></section>
+          <article>
+            {{ page.content | safe }}
+          </article>
+          <link href="/_pagefind/pagefind-ui.css" rel="stylesheet">
+          <script src="/_pagefind/pagefind-ui.js" type="text/javascript"></script>
+            <div id ="search"></div>
+            <script>
+                window.addEventListener('DOMContentLoaded', (event) => {
+                    new PagefindUI({ element: "#search" });
+                });
+            </script>
+          <div>
+            <p>
+                &nbsp;
+            </p>
+            <p class="muted text-sm">
+                目前這個網站是透過 <a href="https://pagefind.app/">Pagefind</a> 進行搜尋，搜尋英文應該沒什麼問題，若要搜尋中文，建議把詞彙拆成最多兩個字一組，再用<code>"</code>符號包圍它。<br>
+                例如若要搜尋「程式語言」或「機器人」，可以搜尋<code>"程式 語言"</code>和<code>"機器 人"</code>，可能會有比較好的搜尋結果！
+            </p>
+          </div>
+          <hr class="w-full">
+        <p class="muted text-sm">
+            如果你對於搜尋結果不太滿意，歡迎來信到<code>{{ trans(key="label_mail")}}</code> 告訴我你的想法。
+        </p>
+        </section>
+        
+       
+      </section>
+</div>
+{% endblock main%}
+
+{% block sidebar %}
+  <aside class="sidebar">
+    <div class="sidebar-element">
+    <h2>{{trans(key="label_new_posts_list_title") | markdown(inline=true) | safe}}</h2>
+    <ul>
+      {% set all_blog_pages = get_section(path="blog/_index.md") -%}
+            {% for page in all_blog_pages.pages | slice(start=0,end=5)  %} 
+            <li class="no-underline">
+            {{ macro::post_side(page=page) }}
+            </li>
+            {% endfor %}
+            <li class="no-underline"> 
+            {{trans(key="label_all_posts") | markdown(inline=true) | safe}}
+            </li>
+    </ul>
+    </div>
+    <div class="sidebar-element">
+    <h2>{{trans(key="label_new_impression_list_title") | markdown(inline=true) | safe}}</h2>
+    <ul>
+        {% set all_blog_pages = get_section(path="impression/_index.md") -%}
+          {% for page in all_blog_pages.pages | slice(start=0,end=5)  %} 
+          <li class="no-underline">
+          {{ macro::impression_side(page=page) }}
+          </li>
+          {% endfor %}
+          <li class="no-underline"> 
+          {{trans(key="label_all_impression") | markdown(inline=true) | safe}}
+          </li>
+    </ul>
+    </div>
+    <div class="sidebar-element">
+    <h2>{{trans(key="label_new_thoughts_list_title") | markdown(inline=true) | safe}}</h2>
+    <ul>
+        {% set all_blog_pages = get_section(path="thoughts/_index.md") -%}
+          {% for page in all_blog_pages.pages | slice(start=0,end=5)  %} 
+          <li class="no-underline">
+          {{ macro::thoughts_side(page=page) }}
+          </li>
+          {% endfor %} 
+          <li class="no-underline">
+          {{trans(key="label_all_thoughts") | markdown(inline=true) | safe}}
+          </li>
+    </ul>
+    </div>
+    <!-- <div class="sidebar-element">
+    <h2>{{trans(key="label_sorting_articles") | markdown(inline=true) | safe}}</h2>
+    <ul>
+        <li class="no-underline">
+          <a href="/tag-list/">{{ trans(key="label_tags") }}</a>
+        </li>
+        <li class="no-underline">
+          <a href="/archive/">{{ trans(key="label_archive") }}</a>
+        </li>
+        <li class="no-underline">
+          <a href="/impression/archive/">{{ trans(key="label_impression_archive") }}</a>
+        </li>
+        <li class="no-underline">
+          <a href="/thoughts/archive/">{{ trans(key="label_thoughts_archive") }}</a>
+        </li>
+    </ul>
+    </div> -->
+    <div class="sidebar-element">
+      {% set custom_sidebar = get_section(path="sidebar/_index.md") %} 
+      {{ custom_sidebar.content | safe }} 
+    </div>         
+  </aside>
+{% endblock sidebar %}

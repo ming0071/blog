@@ -1,0 +1,173 @@
+{% import "macros.html" as macro -%}
+{% set all_section_pages = get_section(path="_index.md") -%}
+
+<!DOCTYPE html>
+<html
+  lang="{{ lang }}"
+  itemscope
+  itemtype="http://schema.org/Blog"
+>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+    <link rel="stylesheet" href="{{ get_url(path="site/styles/site.css",
+    trailing_slash=false,cachebust=true) | safe }}" async>
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+
+    {% if config.generate_rss %} <link rel="alternate"
+    type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml") }}">
+    {% endif %}
+    {% block canonical_url %}{% endblock canonical_url %}
+    <meta
+      name="description"
+      itemprop="about"
+      content="{% block description -%}{{ config.description }}{% endblock description -%}"
+    />
+    <meta
+      name="keywords"
+      itemprop="keywords"
+      content="keywords"
+    />
+    <meta name="author" itemprop="author" content="{{ config.extra.author }}" />
+    <meta itemprop="headline" content="{{ config.title }}" />
+    <meta itemprop="copyrightYear" content="{{ now() | date(format='%Y') }}" />
+    <link rel="icon" href="{{ get_url(path='site/images/black-cat-36x36.png') }}"
+    type="image/x-icon"> 
+    <!-- 引用 Noto Sans TC 字體 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ get_url(path='site/images/black-cat-36x36.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ get_url(path='site/images/black-cat-36x36.png') }}">
+    <!-- App setting -->
+    <link rel="manifest" href="{{ get_url(path='site/images/manifest.json') }}">
+    <!-- 聯邦宇宙 -->
+    <!--link rel="me" href="https://pkm.social/@pj"--> 
+    <link rel="preload" as="font">
+    <meta name="msapplication-TileColor" content="{{ config.extra.theme_color }}" />
+    <meta name="msapplication-TileImage" content="https://pinchlime-screenshots.s3.ap-northeast-1.amazonaws.com/favicon-32x32_to9pAp.png">
+    <meta name="theme-color" content="{{ config.extra.theme_color }}" />
+
+    <!-- Open Graph (OG) 標籤設定 -->
+    <meta
+      property="og:title"
+      content="{% block ogtitle %}{{ config.title }}{% endblock ogtitle %}"
+    />
+    <meta
+      property="og:description"
+      content="{% block ogdesc %}{{ config.description }}{% endblock ogdesc %}"
+    />
+    <meta
+      property="og:url"
+      content="{% block ogurl %}{{ config.base_url }}{% endblock ogurl%}"
+    />
+    <meta property="og:site_name" content="{{ config.title }}" />
+    <meta property="og:type" content="website" />
+    {% if page.extra.image %}
+    <meta property="og:image" content="{% block ogimg %}{{ page.extra.image }}{% endblock ogimg %}" />
+    {% else %}
+    <meta property="og:image" content="{{ get_url(path='site/images/black-cat-600x600.png') }}" />
+    <meta property="og:image:width" content="600"/>
+    <meta property="og:image:height" content="600"/>
+    {% endif %}
+    <!-- 指定在 Twitter 上分享時的預覽樣式 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- 設定 Twitter Card 的圖片相關屬性 -->
+    {% if page.extra.image %}
+    <meta name="twitter:image" content="{% block ogimg %}{{ page.extra.image }}{% endblock ogimg %}" />
+    <meta
+      name="twitter:image:alt"
+      content="{% block ogaltimg %}{{ config.title }}{% endblock ogaltimg %}" />
+    {% else %}
+    <meta name="twitter:image" content="{{ get_url(path='site/images/black-cat-1200x630.png') }}" />
+    <meta
+      name="twitter:image:alt"
+      content="{% block ogaltimg %}{{ config.title }}{% endblock ogaltimg %}" />
+    {% endif %}
+    <!-- 引入 FancyBox 套件 -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+    />
+    {% block post_meta %}{% endblock post_meta %}
+  </head>
+  <!-- {{ trans(key="label_icon") }} -->
+  <body>
+    <section id="top">
+      {% block nav_bar -%}
+      <nav class="navbar-top">
+        <div class="nav-container">
+        <div>
+          <a class="navbar-a" style="color: #ffffff" href="{{ config.base_url }}" >
+            <img src={{ trans(key="label_icon") }} width = "32" height = "32" alt="Logo of Ming's Blog" >
+            <span class="navbar-name" style="padding-left: 20px;"> Ming's Blog </span>
+          </a> 
+        </div>
+        <div class="mobile-menu-icon">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="navbar-name">
+          <a class="menu-button" href="/blog/">Blog</a>
+          <a class="menu-button" href="/thoughts/">Thoughts</a>
+          <a class="menu-button" href="/impression/">Impression</a>
+          <a class="menu-button" href="/stream/2023">Stream</a>
+          <a class="menu-button-search" href="/search/">
+            <img src="https://pinchlime-screenshots.s3.ap-northeast-1.amazonaws.com/search-icon_IsXZSS.svg" alt="search-icon" >
+          </a>
+        </div>
+        <div class="mobile-menu">
+          <a class="menu-button" href="/blog/">Blog</a>
+          <a class="menu-button" href="/thoughts/">Thoughts</a>
+          <a class="menu-button" href="/impression/">Impression</a>
+          <a class="menu-button" href="/stream/2023">Stream</a>
+          <hr style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+          <a class="menu-button" href="/about/">About</a>
+          <a class="menu-button" href="/library/">Library</a>
+          <a class="menu-button" href="/changelog/">Changelog</a>
+        </div>
+        </div>
+      </nav>
+      {% endblock nav_bar %}
+    </section>
+    <section id="root" >
+      {% block body_zone -%}
+      <main class="body-zone flex justify-between flex-1">
+          <section id="main" class="main flex-1 py">
+            <div>
+              {% block main %}
+              {% endblock main %}
+            </div>
+          </section>
+
+      {% block sidebar %}
+      {% endblock sidebar %}
+      </main>
+      {% endblock body_zone -%}
+   
+    </section>
+    <section id="bottom"></section>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const hamburger = document.querySelector(".hamburger");
+        const mobileMenu = document.querySelector(".mobile-menu");
+    
+        hamburger.addEventListener("click", function() {
+          hamburger.classList.toggle("active");
+          mobileMenu.classList.toggle("show");
+        });
+      });
+    </script>
+    <script>
+      Fancybox.bind("[data-fancybox]", {
+      // Your custom options
+    });
+    </script>
+    {% block custom_script %}
+    {% endblock custom_script -%}
+  </body>
+</html>

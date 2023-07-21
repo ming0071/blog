@@ -1,0 +1,53 @@
+{% extends "page.html" %} 
+{% block breadcrumbs -%}
+  <div class="pt">
+    <span>&gt;&gt;</span>
+    <a class="category" href="/impression/">Impression</a>
+    {% if page.taxonomies.categories %}
+    <span class="divider">/</span>
+    <a class="category" href="{{ get_taxonomy_url(kind="categories", name=page.taxonomies.categories[0]) }}"> {{ page.taxonomies.categories[0] }}</a>
+    {% if page.taxonomies.tags -%}
+    <span class="divider">/</span>
+    {% for tag in page.taxonomies.tags %}
+    <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}">{{ tag }}</a>{% if page.taxonomies.tags | length > 1 %}{% if loop.index != page.taxonomies.tags | length %},{% endif %}{% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endif %}
+    {% if page.taxonomies.kinds %}
+    <span class="divider">/</span>
+    <a class="category" href="{{ get_taxonomy_url(kind="kinds", name=page.taxonomies.kinds[0]) }}">{{ page.taxonomies.kinds[0] }}</a>    
+    {% if page.taxonomies.tags -%}
+    <span class="divider">/</span>
+    {% for tag in page.taxonomies.tags %}
+    <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}">{{ tag }}</a>{% if page.taxonomies.tags | length > 1 %}{% if loop.index != page.taxonomies.tags | length %},{% endif %}{% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endif %}
+  </div>
+{% endblock breadcrumbs %}
+{% block detail_meta_slot -%}
+<span># {{page.extra.issues }} &nbsp;</span>
+{% endblock detail_meta_slot -%}
+{% block outro %}
+<br>
+<blockquote>
+  <setion class="muted text-sm">
+    <p>
+      如果你對於這個網站或這篇文有任何想討論的，歡迎<a class="muted" href="mailto:{{ trans(key="label_mail") }}?subject={{"回覆："~page.title | urlencode }}">來信</a>到：<code>{{ trans(key="label_mail") }}</code> 跟我分享！
+      </p>
+  </setion>
+</blockquote>
+{% endblock outro %}
+{% block impression_sidebar_slot %}
+<div class="sidebar-element">
+<h2>看其他<span style="text-decoration:underline;"><a href="/impression/">電子報</a></span></h2>
+<ul>
+  {% set all_blog_pages = get_section(path="impression/_index.md") -%}
+  {% for page in all_blog_pages.pages | slice(start=0,end=5)  %} 
+  <li class="no-underline">
+    {{ macro::impression_side(page=page) }}
+  </li>
+  {% endfor %} 
+</ul>
+</div>
+{% endblock impression_sidebar_slot %}

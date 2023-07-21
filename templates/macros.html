@@ -1,0 +1,245 @@
+{% macro post_max(page) %}
+  <article>
+  <div class="element">
+  <h1><a class="no-underline " href="{{ page.permalink }}">{{ page.title }}</a></h1>
+  <section>
+    <div class="muted" style="justify-content: space-between;display: flex;">
+      <time pubdate>{{ page.date | date(format="%Y-%m-%d") }}</time>
+      <span>{{ config.extra.author }}</span>
+    </div>
+  </section>
+
+  {% if page.summary -%}
+  <div>{{ page.summary | safe }}</div>
+  <div class="continue-reading-btn">
+    <section>
+      <a href="{{ page.permalink }}#continue-reading"><span>{{ trans(key="label_read_more") }} </span></a>
+    </section>
+  </div>
+  <br>
+  {% elif page.content -%}
+  <p>{{ page.content | safe }}</p>
+  {% endif -%}
+  <div class="muted" style="justify-content: space-between;display: flex;">
+  {% if page.taxonomies.tags %}
+  <div>
+    {% for tag in page.taxonomies.tags %}
+    <a class="muted text-sm no-underline" href="{{ get_taxonomy_url(kind="tags", name=tag) }}">#{{ tag }}</a>{% if page.taxonomies.tags | length > 1 %}
+    {% if loop.index != page.taxonomies.tags | length %}&nbsp;{% endif %}{% endif %}
+  {% endfor %}
+  </div>
+  {% endif %}
+  </div>
+</div>
+</article>
+{% endmacro post_max %}
+
+
+{% macro post_min(page) %}
+<div style="display: flex;justify-content: space-between">
+<a class="no-underline li_archive" href="{{ page.permalink }}">{{ page.title }}</a> 
+<span class="muted text-sm" style="font-family: menlo;">{{ page.date | date(format="%b %d") }}</span>
+</div>
+{% endmacro post_min %}
+
+{% macro thoughts_min(page) %}
+<div style="display: flex;justify-content: space-between">
+<a class="no-underline li_archive" href="{{ page.permalink }}">{{ page.title }}</a> 
+<span class="muted text-sm" style="font-family: menlo;">{{ page.date | date(format="%b %d") }}</span>
+</div>
+
+{% endmacro thoughts_min %}
+
+{% macro impression_min(page) %}
+<div style="display: flex; justify-content: space-between;">
+  <div style="display: flex;">
+    <div class="li_archive_news">
+      <span style="margin-right: 1rem; font-family: menlo;">＃{{page.extra.issues }}</span><a class="no-underline" href="{{ page.permalink }}">{{ page.title }}</a>
+    </div>
+  </div>
+  <span class="muted text-sm" style="font-family: menlo; white-space: nowrap;">{{ page.date | date(format="%b %d") }}</span>
+</div>
+
+{% endmacro impression_min %}
+
+{% macro library_min(page) %}
+<div style="display: flex;justify-content: space-between; line-height: 1;">
+<a class="no-underline li_archive" href="{{ page.permalink }}">{{ page.title }}</a> 
+<span class="muted text-sm" style="font-family: menlo;">{{ page.updated | date(format="%Y-%m-%d") }}</span>
+</div>
+{% endmacro library_min %}
+
+{% macro post_side(page) %}
+<a href="{{ page.permalink }}">{{ page.title }}</a><br>
+{% endmacro post_side %}
+
+{% macro thoughts_side(page) %}
+<a href="{{ page.permalink }}">{{ page.title }}</a><br>
+{% endmacro thoughts_side %}
+
+{% macro impression_side(page) %}
+<span>＃{{page.extra.issues }} </span><a href="{{ page.permalink }}">{{ page.title }}</a><br>
+{% endmacro impression_side %}
+
+{% macro library_side(page) %}
+<li>
+<a href="{{ page.permalink }}">{{ page.title }}</a>
+</li>
+{% endmacro library_side %}
+
+{% macro page_toc(toc)%}
+<section class="sidebar-table-content">
+  <ul >
+    <li><a href="#start">{{trans(key="label_back_to_start")}}</a></li>
+  {% for h1 in toc %}
+      <li>
+          <a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
+          {% if h1.children %}
+              <ul>
+                  {% for h2 in h1.children %}
+                      <li>
+                          <a href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
+                      </li>
+                  {% endfor %}
+              </ul>
+          {% endif %}
+      </li>
+  {% endfor %}
+  </ul>
+</section>
+{% endmacro page_toc %}
+
+{% macro paginator(ref, extra) %}
+<div class="element" style="background: none; box-shadow:none;"">
+  <ul class="list-none flex justify-between" style="max-width: 50rem;">
+    {% if ref.current_index != 1 %}
+      <li><a class="no-underline" href="{{ ref.first }}">&larrb;</a></li>
+    {% else %}
+      <li class="disabled"><a class="no-underline" href="{{ ref.first }}">&larrb;</a></li>
+    {% endif %}
+
+    {% if ref.previous %}
+      <li><a class="no-underline" href="{{ ref.previous }}">&larr;</a></li>
+    {% else %}
+      <li class="disabled"><a class="no-underline" href="#">&larr;</a></li>
+    {% endif %}
+
+    <li><a class="no-underline" href="{{get_url(path="@/archive/_index.md")}}">{{ ref.current_index }}/{{ ref.number_pagers }}</a></li>
+    
+    {% if ref.next %}
+      <li><a class="no-underline" href="{{ ref.next }}">&rarr;</a></li>
+    {% else %}
+      <li class="disabled"><a class="no-underline" href="#">&rarr;</a></li>
+    {% endif %}
+
+    {% if ref.current_index != ref.number_pagers %}
+      <li><a class="no-underline" href="{{ ref.last }}">&rarrb;</a></li>
+    {% else %}
+      <li class="disabled"><a class="no-underline" href="{{ ref.last }}">&rarrb;</a></li>
+    {% endif %}
+  </ul>
+</div>
+{% endmacro paginator %}
+{% macro backlink(pages) %}
+{% if pages and pages | length >0 %}
+  <section class="backlinks ">
+    <hr>
+    <h3>Links to this page ({{ pages | length }})</h3>
+    <ul>
+      {% for page in pages %}
+        <li>
+          <a href="{{ page.permalink }}">{{ page.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endif %}
+{% endmacro backlink %}
+{% macro section_links(section) %}
+<li>
+  <a href="{{ section.permalink }}">{{ section.title }}</a>
+  <ul>
+    {% for subsection_path in section.subsections %}
+      {% set subsection = get_section(path=subsection_path) %}
+      <li><a href="{{ subsection.permalink }}">{{ subsection.title }}</a></li>
+    {% endfor %}
+  </ul>
+</li>
+{% endmacro section_links %}
+
+{% macro breadcrumb_link(path) %}
+{% set trimmed_path = path | trim_start_matches(pat="/") | trim_end_matches(pat="/_index.md") %}
+{% set modified_path = trimmed_path ~ "/_index.md" %}
+{% set section = get_section(path=modified_path) %}
+<a href="{{ section.permalink }}">{{ section.extra.bread_name }}</a>
+{% endmacro breadcrumb_link %}
+
+{% macro breadcrumbs(current_section) %}
+<div class="pt" style="padding-bottom: 1rem;">
+  {% for path in current_section.ancestors %}
+    {% if path != "_index.md" %}
+      {{ macro::breadcrumb_link(path=path) }}
+      <span>></span>
+    {% endif %}
+  {% endfor %}
+  {{ macro::breadcrumb_link(path=current_section.path) }}
+</div>
+{% endmacro breadcrumbs %}
+
+{% macro page_breadcrumb_link(path) %}
+  {% set section = get_section(path=path) %}
+  <a href="{{ section.permalink }}">{{ section.extra.bread_name }}</a>
+{% endmacro page_breadcrumb_link %}
+
+{% macro page_breadcrumbs(page) %}
+<div class="pt" style="padding-bottom: 1rem;">
+  {% for path in page.ancestors %}
+    {% if path != "_index.md" %}
+      {{ macro::page_breadcrumb_link(path=path) }}
+      <span>></span>
+    {% endif %}
+  {% endfor %}
+  {% set current_page = get_page(path=page.relative_path) %}
+  <a href="{{ page.permalink }}">{{ current_page.title }}</a>
+</div>
+{% endmacro page_breadcrumbs %}
+
+
+
+
+
+
+{% macro render_sidebar(section) %}
+    <ul class="nav-level-1">
+        {% for child_path in section.subsections %}
+            {% set child = get_section(path=child_path) %}
+            <li>
+                <div class="nav-toggle">
+                    <h3><a href="{{ child.permalink }}">{{ child.extra.bread_name }}</a></h3>
+                    <span class="arrow right"></span>
+                </div>
+                {% if child.subsections %}
+                    <ul class="nav-level-2 nav-hidden">
+                        {% for grandchild_path in child.subsections %}
+                            {% set grandchild = get_section(path=grandchild_path) %}
+                            <li>
+                                <div class="nav-toggle">
+                                    <h4><a href="{{ grandchild.permalink }}">{{ grandchild.extra.bread_name }}</a></h4>
+                                    <span class="arrow right"></span>
+                                </div>
+                                {% if grandchild.pages %}
+                                    <ul class="nav-level-3 nav-hidden">
+                                        {% for page in grandchild.pages | slice(start=0,end=10) %}
+                                            <li>{{ macro::library_side(page=page) }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <br>
+{% endmacro render_sidebar %}
