@@ -1,7 +1,7 @@
 ---
 title: 在 VS Code 中執行 C/C++ 的方法( Windows )
 date: 2023-07-20
-description: 介紹了如何設定在 VS Code 中可以執行 C/C++ 的方法，適用於 Windows 環境，還有一些 MinGW 編譯器相關的介紹。
+description: 介紹了如何設定在 Visual Studio Code(VS Code) 中可以執行 C/C++ 的方法，適用於 Windows 環境，還有一些 MinGW 編譯器相關的介紹。
 path: blog/vscoode-use-c-code
 draft: false
 taxonomies:

@@ -2,7 +2,7 @@
 title: 關於我
 path: about/
 date: 2023-07-14
-description: 這裡有關於網站的介紹，也有我的相關資訊、聯絡方式
+description: 這裡有關於 Ming's Blog 的介紹，也有我的相關資訊、聯絡方式
 template: about.html
 ---
 

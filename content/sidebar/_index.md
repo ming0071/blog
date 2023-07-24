@@ -9,3 +9,4 @@ updated: 2023-07-15
 - [Stream](/stream/2023)
 - [About](/about/)
 - [Library](/library)
+- [Changelog](/changelog)
