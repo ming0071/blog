@@ -1,0 +1,16 @@
+[[headers]]
+    for = "/*"
+
+    [headers.values]
+    cache-control = '''
+    public,
+    max-age=0,
+    must-revalidate'''
+
+[build]
+    publish = "public/"
+    command = "zola build && npx pagefind@v0.12.0 --source public"
+    
+
+    [build.environment]
+         ZOLA_VERSION = "0.17.1"
