@@ -17,6 +17,13 @@ template: changelog.html
 
 ---
 
+## Ver. 1.0.0   <span class = "muted flex-right">23.07.24</span>
+
+#### Changed
+
+網站部屬上架。
+
+---
 ## Ver. 0.1.0   <span class = "muted flex-right">23.07.18</span>
 
 #### Added

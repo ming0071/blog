@@ -1,5 +1,5 @@
 # blog
-Ming's Blog
+[Ming's Blog](https://ming-blog.netlify.app/)
 
 在 Twitter 上偶然看到秉儒分享了他的[部落格建置心得](https://twitter.com/WuPingJu/status/1658128099110711299)，發現是個不需要架設伺服器，不須付費就可以使用的方法，而內容也是跟我現在筆記的一樣是 markdown 語法，完全沒有多餘的摩擦力，所以馬上就被燒到也想搞一個自己的網站出來。
 
