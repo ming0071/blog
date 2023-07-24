@@ -21,11 +21,11 @@ template: changelog.html
 
 #### Changed
 
-網站部屬上架。
+- 網站部屬上架。
 
 #### Removed
 
-從 [pagespeed](https://pagespeed.web.dev/analysis/https-ming-blog-netlify-app/jhem5eqkwf?form_factor=mobile) 測試效能後發現行動裝置端的跑分只有61，發現是引用了 google font 的問題，把它移除之後就拉到91分了，目前效能分數行動裝置91分、電腦92分，還算不錯的分數。
+- 從 [pagespeed](https://pagespeed.web.dev/analysis/https-ming-blog-netlify-app/jhem5eqkwf?form_factor=mobile) 測試效能後發現行動裝置端的跑分只有61，發現是引用了 google font 的問題，把它移除之後就拉到91分了，目前效能分數行動裝置91分、電腦92分，還算不錯的分數。
 
 ---
 ## Ver. 0.1.0   <span class = "muted flex-right">23.07.18</span>
