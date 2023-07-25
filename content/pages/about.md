@@ -14,9 +14,11 @@ template: about.html
 
 [網站部屬的方法](https://pinchlime.com/blog/rebuilt-pinchlime/)也是和秉儒相同，使用 Zola + Netlify + Github，系統架構則經詢問後秉儒同意使用[ Pin 起來](https://pinchlime.com/)的開源碼，後續再自己慢慢修改成想像中的樣子。
 
+而網站的 logo 是取自[dotown](https://dotown.maeda-design-room.net/page/4/)。
+
 ## 我是誰 ?
 
-現在是學生，目前就讀北科機電所，專案目標主要會在 ROS2。
+現在是學生，目前就讀北科機電所，專案的執行目標主要會在 ROS2，這個網站上也會記錄下我學習的過程。
 
 發現太多事情只是看過一兩眼就好像覺得自己懂了，但實際上過了半天之後只在想晚餐要吃什麼，根本沒學會任何事。
 

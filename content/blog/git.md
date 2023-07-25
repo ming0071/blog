@@ -3,7 +3,7 @@ title: git 基本介紹
 date: 2023-07-20
 description: 關於使用 git 的基本介紹，包含 add、commit、push、pull、colone，還有 ssh key 的基本說明。
 path: blog/git
-draft: true
+draft: false
 taxonomies:
   categories: 
     - Coding
@@ -22,7 +22,7 @@ github 大概是每個跟工程相關的人都會聽過的東西，但是應該�
   <img src="/site/images/git-flow.png" loading="lazy" alt="git-flow" width="520"/>
 </a><br>
 
-以下是使用 git 以及上傳 local repository 到 github 的基礎教學。
+以下是使用 git 以及上傳 local repository (本地端檔案庫)到 github 的基礎教學。
 
 ---
 
@@ -44,13 +44,71 @@ github 大概是每個跟工程相關的人都會聽過的東西，但是應該�
 1. **放到 repository 專案** : 只作用在該專案內。「repository」→「settings」→「Deploy keys」→「Add deploy key」→輸入 title、key，並在 allow write access 打勾。
 2. **放到 github 帳戶** : 所有的專案都會被作用。「個人頭像」→「settings」→「SSH and GPG key」→「New SSH key」→輸入 title、key，且選擇Authentication keys{{ ftnt_refs( idxs=[1]) }}。
 
-設定完 ssh key 後就可以上傳 local repository 到 public 的 remote repository 了。
+設定完 ssh key 後就可以上傳 local repository (本地端檔案庫)到 public 的 remote repository (遠端檔案庫)了。
 
 ## git 指令操作
 
 ### git init
+在資料夾中建立一個 git repository 並初始化 repo，只需要執行一次即可，如果有用 colone 就會載入 repository 了，所以可以不用再執行。
+```
+$ git init
+```
 
+### git status
+查看資料夾中檔案的已更新狀態，會以紅字表示有更動，綠色表示已加入 git 追蹤，被 commit 後因為已經存檔就不會再顯示。
+```
+$ git status
+```
 
+### git add
+把檔案加到 git 追蹤內。
+```
+// 加入單個檔案
+$ git add 123.txt
+// 加入當下資料夾內的所有檔案
+$ git add .
+```
+
+### git commit
+存檔，把 add 的 git 狀態加入到 local repository 裡頭。
+```
+// 會打開文字編輯器
+$ git commit
+// 不會打開文字編輯器並以 message 作為版本訊息說明
+$ git commit -m "message"
+```
+
+### git log
+查看 commit 的歷程記錄。
+```
+$ git log
+```
+
+### git remote
+把 github 內的 repository 與 local repository 連結，裡面的 url 會是`https://github.com/你的帳戶名字/專案名字.git`的形式。
+```
+// 創建名為 origin 的遠端檔案庫 
+$ git remote add origin url
+```
+
+### git push
+把 local repository 推上 remote repository 
+```
+// 推上名為 origin 的 remote repo main 分支
+$ git push -u origin main
+```
+
+### git pull
+把 github 上的檔案抓下來到 local 端更新紀錄，所以 push 的時候當 github 上的內容比 local 端的還要新的話，就會跳出錯誤提示避免把內容給覆蓋掉，這時候就先 pull 再 push 就沒問題了。
+```
+$ git pull
+```
+
+### git colone
+複製 github 上的專案下來使用，會把 git 紀錄、分支都一起下載下來。
+```
+$ git colone url
+```
 
 ## 參考
 
