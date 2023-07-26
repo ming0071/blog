@@ -82,13 +82,6 @@ int main() {
 }
 ```
 
-## 參考
-
-- [用 VSCode 寫 C/C++ 教學](https://hackmd.io/@liaojason2/vscodecppwindows)
-- [[C++] MinGW-w64 安裝與設定](https://alexspot.tech/jottings-windows-vscode-with-mingw-w64/)
-- [Meaning of options in mingw-w64 installer](https://stackoverflow.com/questions/29947302/meaning-of-options-in-mingw-w64-installer)
-- [What is difference between sjlj vs dwarf vs seh?](https://stackoverflow.com/questions/15670169/what-is-difference-between-sjlj-vs-dwarf-vs-seh/15685229#15685229)
-
 ## 註腳
 
 {% ftnt( idx = 1 ) %}
@@ -104,3 +97,12 @@ g++ 和 gcc 都是GNU Compiler Collection 的 C++ 編譯器，但兩者有用途
 g++ 支援 C++ 編譯，同時也兼容 C 程式碼的編譯，適合處理同時包含 C 和 C++ 程式碼的專案。<br>
 gcc 主要用於編譯 C 語言程式碼，並在擴展語法上支援某些 C++ 功能，但不完全支援 C++ 。
 {% end %}
+
+---
+
+## 參考
+
+- [用 VSCode 寫 C/C++ 教學](https://hackmd.io/@liaojason2/vscodecppwindows)
+- [[C++] MinGW-w64 安裝與設定](https://alexspot.tech/jottings-windows-vscode-with-mingw-w64/)
+- [Meaning of options in mingw-w64 installer](https://stackoverflow.com/questions/29947302/meaning-of-options-in-mingw-w64-installer)
+- [What is difference between sjlj vs dwarf vs seh?](https://stackoverflow.com/questions/15670169/what-is-difference-between-sjlj-vs-dwarf-vs-seh/15685229#15685229)

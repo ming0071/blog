@@ -13,55 +13,57 @@ taxonomies:
     - ssh key
 ---
 
-github 大概是每個跟工程相關的人都會聽過的東西，但是應該也不少人沒搞懂它是在幹嘛的，其實 git 和 github 是不同的東西，以下說明兩者之間的差異 :<br>
+github 大概是每個工程相關的人都會聽過的東西，但是應該也不少人不清楚它是在做什麼的，其實 git 和 github 是不同的東西 :<br>
 - git 是版本控制的功能，就像遊戲可以儲存進度一樣，讓錯誤發生時就可以有回到上一步的機會。
 - github 是在雲端上儲存 git repository 的地方，讓使用者可以在不同的設備間合作。
 
-而且在 windows 要使用 git 還需要另外安裝[windows git](https://git-scm.com/download/win)的，而在下圖中清楚地說明了 git 中常見的基礎指令是在做哪些事情的
+在 windows 要使用 git 需要另外安裝[windows git](https://git-scm.com/download/win)的，下圖中清楚地說明了 git 中常見的基礎指令是在做哪些事情的
 <a href="/site/images/blog/git-flow.png" data-fancybox data-caption="git-flow">
-  <img src="/site/images/git-flow.png" loading="lazy" alt="git-flow" width="520"/>
+  <img src="/site/images/blog/git-flow.png" loading="lazy" alt="git-flow" width="520"/>
 </a><br>
 
-以下是使用 git 以及上傳 local repository (本地端檔案庫)到 github 的基礎教學。
+以下是使用 git 和上傳 local repository (本地端檔案庫)到 github 的基礎教學。(以下將 repository 簡稱為 repo)
 
 ---
 
 ## 創建 repository
 
-一開始先在 github 上創建一個新的 repository，創建過程中需要選擇選擇 private 或 public，他們的差異是 private 可以不需要再設置 ssh key 就可以上傳，而 public 則需要創建 ssh key 來對上傳者進行身分認證，避免公開的 remote repository 任何人都有權限上傳到 remote repository。
+一開始先在 github 上創建一個新的 repo，創建過程中需要選擇選擇檔案庫是要 private 或 public。<br>
+- private 可以不需要再設置 ssh key 就可以上傳
+- public 則需要創建 ssh key 來對上傳者進行身分認證，避免公開的 remote repo 任何人都有權限上傳到 remote repo
 
 ## 創建 ssh key
 
-一對的 ssh key 可以分為 public key (公鑰)、private key (私鑰)，公鑰會放到網站上與私鑰配對使用，例如 github、netlify 等提供上傳服務的網站、伺服器，私鑰則要非常小心，不能夠外流出去，否則其他人就可以存取、盜用你的資料。
+一對 ssh key 可以分為 public key (公鑰)和private key (私鑰)，公鑰會放到網站上與私鑰配對使用，例如 github、netlify 等提供上傳服務的網站、伺服器，私鑰則要非常小心，不能夠外流出去，否則他人就有了權限存取、盜用你的資料。
 
-創建一對 ssh key 先右鍵點開選單找「Open Git Bash here」，所有和 git 相關的指令都是在這裡進行，輸入指令`ssh-keygen`之後終端機上會出現 3 個問題 :
+創建一對 ssh key 的方法是右鍵打開選單點選「Open Git Bash here」，所有和 git 相關的指令都是在這裡進行，輸入指令`ssh-keygen`之後終端機上會出現 3 個問題 :
 1. key 的路徑要放在哪裡 ?  使用預設路徑按 enter 即可
 2. 要設定 passphase 嗎 ? 要的話當使用 ssh key 時就需要在另外輸入密碼，不要的話按 enter 即可
 3. 再輸入一次 passphase，若上一步沒輸入按 enter 跳過即可
-之後它就會生成一對 ssh key 出來了，螢幕上會出現 ssh key 放的路徑，舉例來說像是`c/users/ming/.ssh/id_rsa.`&`c/users/ming/.ssh/id_rsa.pub`，兩者對應的分別是公鑰以及私鑰。
+之後它就會生成一對 ssh key 出來了，螢幕上會出現 ssh key 放的路徑，舉例來說像是`c/users/ming/.ssh/id_rsa.`&`c/users/ming/.ssh/id_rsa.pub`，兩者對應的分別是私鑰及公鑰。
 
-再來把公鑰的內容放到 githubb 上，依據作用的範圍方法有二 :
+再來把公鑰放到 github 上，之後上傳前會進行匹配，成功就能夠上傳，依據作用的範圍方法有二 :
 1. **放到 repository 專案** : 只作用在該專案內。「repository」→「settings」→「Deploy keys」→「Add deploy key」→輸入 title、key，並在 allow write access 打勾。
 2. **放到 github 帳戶** : 所有的專案都會被作用。「個人頭像」→「settings」→「SSH and GPG key」→「New SSH key」→輸入 title、key，且選擇Authentication keys{{ ftnt_refs( idxs=[1]) }}。
 
-設定完 ssh key 後就可以上傳 local repository (本地端檔案庫)到 public 的 remote repository (遠端檔案庫)了。
+設定完 ssh key 後就能夠上傳 local repo (本地端檔案庫)到 public 的 remote repo (遠端檔案庫)了。
 
 ## git 指令操作
 
 ### git init
-在資料夾中建立一個 git repository 並初始化 repo，只需要執行一次即可，如果有用 colone 就會載入 repository 了，所以可以不用再執行。
+在資料夾中建立一個 git repo 並初始化檔案庫，只需要執行一次即可，如果是用 colone 就會載入檔案庫，所以不用再執行 init。
 ```
 $ git init
 ```
 
 ### git status
-查看資料夾中檔案的已更新狀態，會以紅字表示有更動，綠色表示已加入 git 追蹤，被 commit 後因為已經存檔就不會再顯示。
+查看資料夾中檔案的已更新狀態，會以紅字表示有更動，綠字表示已加入 git 追蹤，當被 commit 後因為已經存檔就不會再顯示。
 ```
 $ git status
 ```
 
 ### git add
-把檔案加到 git 追蹤內。
+把檔案加到 git 追蹤內，會因為後段的指令內容而有不同的作用。
 ```
 // 加入單個檔案
 $ git add 123.txt
@@ -70,7 +72,7 @@ $ git add .
 ```
 
 ### git commit
-存檔，把 add 的 git 狀態加入到 local repository 裡頭。
+存檔，把 add 後的 git 狀態加入到 local repo 內。
 ```
 // 會打開文字編輯器
 $ git commit
@@ -79,20 +81,20 @@ $ git commit -m "message"
 ```
 
 ### git log
-查看 commit 的歷程記錄。
+查看 commit 的歷程記錄，以時間軸倒序而由上到下排列。
 ```
 $ git log
 ```
 
 ### git remote
-把 github 內的 repository 與 local repository 連結，裡面的 url 會是`https://github.com/你的帳戶名字/專案名字.git`的形式。
+把 github 內的 repo 與 local repo 連結，裡面的 url 會是`https://github.com/你的帳戶名字/專案名字.git`的形式。
 ```
 // 創建名為 origin 的遠端檔案庫 
 $ git remote add origin url
 ```
 
 ### git push
-把 local repository 推上 remote repository 
+把 local repo 推上 remote repo 
 ```
 // 推上名為 origin 的 remote repo main 分支
 $ git push -u origin main
@@ -110,11 +112,7 @@ $ git pull
 $ git colone url
 ```
 
-## 參考
-
-- [【GIT 小教室】SSH Key 的建立與設定](https://www.youtube.com/watch?v=CeC_qyQHiCE)
-- [【git教學 #1】15分鐘學會git & github（附實例）](https://www.youtube.com/watch?v=Zd5jSDRjWfA)
-- [【Day10】Git 版本控制 - 將檔案 push 到 GitHub 的懶人包](https://ithelp.ithome.com.tw/articles/10271811)
+以上是常用的 git 基礎指令介紹。
 
 ## 註腳
 
@@ -123,3 +121,11 @@ $ git colone url
 Authentication keys 是用於驗證 GitHub 上特定帳戶的憑證，當作 git 指令操作時可以證明是帳戶的擁有者。
 Signing keys 是用於證明操作是由本人進行操作的。
 {% end %}
+
+---
+
+## 參考
+
+- [【GIT 小教室】SSH Key 的建立與設定](https://www.youtube.com/watch?v=CeC_qyQHiCE)
+- [【git教學 #1】15分鐘學會git & github（附實例）](https://www.youtube.com/watch?v=Zd5jSDRjWfA)
+- [【Day10】Git 版本控制 - 將檔案 push 到 GitHub 的懶人包](https://ithelp.ithome.com.tw/articles/10271811)
