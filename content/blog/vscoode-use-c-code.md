@@ -42,9 +42,9 @@ taxonomies:
 
 設定說明 :
 - **Version**：gcc 的版本，選擇默認選項。
-- **Architecture**：選擇自己電腦的位元數，我的是 64bit 所以選 x86_64。
+- **Architecture**：選擇 CPU 的位元數，32 位元選擇 i686、64 位元選擇 x86_64。
 - **Threads**：作業系統的 API 選擇，Windows 選 win32；有需要與其他作業系統合作選 posix。
-- **Exception**：異常處理方法，選擇 seh，它速度、效能最好，是 Windows 系統原生支援的方式。
+- **Exception**：異常處理機制，選擇 seh，它速度、效能最好，是 Windows 系統原生支援的方式，但只能用於 64 位元。
 - **Build revision**：構建修訂版本號，可以維持默認就好。
 
 如果你安裝的過程有出現`The file has been downloaded incorrectly`問題可以參考這裡的說明{{ ftnt_refs( idxs=[2]) }}
