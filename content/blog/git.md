@@ -86,8 +86,14 @@ $ git commit -m "message"
 $ git log
 ```
 
+### git branch
+
+```
+git branch -M main
+```
+
 ### git remote
-把 github 內的 repo 與 local repo 連結，裡面的 url 會是`https://github.com/你的帳戶名字/專案名字.git`的形式。
+把 github 內的 repo 與 local repo 連結，以 SSH 的方式上傳，裡面的 url 會是`git@github.com:你的帳戶名字/專案名字.git`的形式。
 ```
 // 創建名為 origin 的遠端檔案庫 
 $ git remote add origin url
@@ -138,3 +144,4 @@ Signing keys 是用於證明操作是由本人進行操作的。
 - [【GIT 小教室】SSH Key 的建立與設定](https://www.youtube.com/watch?v=CeC_qyQHiCE)
 - [【git教學 #1】15分鐘學會git & github（附實例）](https://www.youtube.com/watch?v=Zd5jSDRjWfA)
 - [【Day10】Git 版本控制 - 將檔案 push 到 GitHub 的懶人包](https://ithelp.ithome.com.tw/articles/10271811)
+- [30 天精通 Git 版本控管 (01)：認識 Git 版本控管](https://ithelp.ithome.com.tw/articles/10132053)
