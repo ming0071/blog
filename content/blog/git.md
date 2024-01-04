@@ -87,13 +87,13 @@ $ git log
 ```
 
 ### git branch
-
+開啟分支，這裡選主分支 main。 
 ```
 git branch -M main
 ```
 
 ### git remote
-把 github 內的 repo 與 local repo 連結，以 SSH 的方式上傳，裡面的 url 會是`git@github.com:你的帳戶名字/專案名字.git`的形式。
+把 github 內的 repo 與 local repo 連結，以 SSH 的方式上傳，裡面的 url 會是`git@github.com:your_account/your_repository.git`的形式。
 ```
 // 創建名為 origin 的遠端檔案庫 
 $ git remote add origin url
@@ -120,7 +120,17 @@ $ git colone url
 
 ## 常用指令
 
-直接使用這一段指令對資料夾內的已更新檔案上傳到 github 上。
+創立一個新的 repository 到 github。
+```
+echo "# your_repository" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:your_account/your_repository.git
+git push -u origin main
+```
+對資料夾內的已更新檔案上傳到 github 上。
 ```
 $ git add .
 $ git commit -m "message"
