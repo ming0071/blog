@@ -8,7 +8,7 @@ draft: false
 extra:
   issues: 1
 kinds:
-  tags: cool-something
+  - cool-something
 ---
 
 ## 緣起
