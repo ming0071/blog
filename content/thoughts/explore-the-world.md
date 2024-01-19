@@ -7,6 +7,8 @@ path: thoughts/explore-the-world
 draft: false
 extra:
   issues: 1
+kinds:
+  tags: cool-something
 ---
 
 ## 緣起
