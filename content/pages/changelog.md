@@ -16,7 +16,13 @@ template: changelog.html
 以下是依時間倒序排列的 changelogs ，歡迎瀏覽！
 
 ---
+## Ver. 1.1.0   <span class = "muted flex-right">24.01.19</span>
 
+#### Removed
+
+- 發現自己會想記錄的事情沒有到那麼多，乾脆把 impression、thoughts 的頁面移除，全部都一致歸類到 blog 頁面。
+
+---
 ## Ver. 1.0.0   <span class = "muted flex-right">23.07.24</span>
 
 #### Changed
