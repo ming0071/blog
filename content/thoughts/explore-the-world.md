@@ -3,7 +3,7 @@ title: 探索世界，認識本我
 date: 2023-08-12
 updated: 2023-08-12
 description: 該藉由探索世界的過程提高自己的思維高度，進而更認清自己是什麼樣的人，並且找到自己的世界觀、人生觀，發現自己想要過的是什麼樣的生活
-path: impression/explore-the-world
+path: thoughts/explore-the-world
 draft: false
 extra:
   issues: 1
