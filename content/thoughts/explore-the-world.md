@@ -7,8 +7,9 @@ path: thoughts/explore-the-world
 draft: false
 extra:
   issues: 1
-kinds:
-  - cool-something
+taxonomies:
+  kinds:
+    - cool-something
 ---
 
 ## 緣起
