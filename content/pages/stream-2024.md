@@ -11,6 +11,6 @@ template: stream.html
 
 ### January
 
-{% fleet(num="8",time="Jan 21 16:36",year="2024") %}
+{% fleet(num="1",time="Jan 21 16:36",year="2024") %}
 今天起開始想認真的經營 blog 的想法，尤其想好好的發揮 stream 這個介面，期許可以讓以後的我看到可以有回到過去的感覺。
 {% end %}
