@@ -19,14 +19,20 @@
 {% block ogurl %}{% if page.path %}{{ config.base_url }}{{ page.path }} {% endif %}{% endblock ogurl %}
 {% block ogimg %}{% if page.extra.image %}{{ page.extra.image }}{% endif %}{% endblock ogimg %}
 {% block main %}
-<div class= "element" >
+<div class="element">
       {% block detail_meta -%}
       <header id="overview">        
         <div>
           <h1>{% block detail_meta_slot %}{% endblock detail_meta_slot %}{{ page.title }}</h1>
-          <div class="muted" style="display: flex;">
+          <div class="muted" style="justify-content: space-between;display: flex;">
             <span>Exploring my thoughts</span>
             <span>{{ config.extra.author }}</span>
+          </div>
+          <div class="muted" style="justify-content: right;display: flex;">
+            <a class="muted" href="/stream/2024">2024</a>&emsp;
+            <a class="muted" href="/stream/2023">2023</a>&emsp;
+            <a class="muted" href="/stream/old-snapshots">Old Snapshots</a>&emsp;
+            <a class="muted" href="/blog/built-a-personal-twitter-the-stream">About this page</a>
           </div>
         </div>
       </header>
@@ -41,12 +47,11 @@
       </section>
       {% block outro %}
       {% if config.extra.email %}
-      <hr>
       <br>
       <section id="contact">
       <div id="email-comment" class="muted text-sm">
         <p style="margin-left: 0;">
-        如果你想回覆或討論特定的某一則 Stream ，歡迎提到它的編號，並且可以<a class="muted" href="mailto:{{ trans(key='label_mail') }}?subject={{'回覆：'~page.title | urlencode }}">來信</a>到：<code>{{ trans(key="label_mail")}}</code> 跟我分享！
+        如果你想回覆或討論特定的某一則 Stream ，歡迎提到它的編號，並且可以<a class="muted" href="mailto:pj@pinchlime.com?subject={{"回覆："~page.title | urlencode }}">來信</a>到：<code>pj@pinchlime.com</code> 跟我分享！
         </p>
       </div>
       </section>
