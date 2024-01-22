@@ -56,6 +56,6 @@ taxonomies:
 - [當目標不見了，我們該怎麼辦？—致那個迷惘的自己](https://sprinklesandsuits.com/2019/07/%e7%95%b6%e7%9b%ae%e6%a8%99%e4%b8%8d%e8%a6%8b%e4%ba%86%ef%bc%8c%e6%88%91%e5%80%91%e8%a9%b2%e6%80%8e%e9%ba%bc%e8%be%a6%ef%bc%9f-%e8%87%b4%e9%82%a3%e5%80%8b%e8%bf%b7%e6%83%98%e7%9a%84%e8%87%aa/)
 - [what you’ll wish you ‘d known](http://www.paulgraham.com/hs.html)
 
-## 番外
+## 後記
 
 其實覺得這篇寫得文筆挺怪的XD，不知道是不是因為這個主題太大，還是自己沒有很深刻的認知的關係，只是帶著一點模模糊糊的感覺就寫下了這篇文章，不過有找到這個問題的答案還是挺感動的，文筆爛就爛吧，以後見解清晰了再回來改吧，反正第一篇會有免責權XD
