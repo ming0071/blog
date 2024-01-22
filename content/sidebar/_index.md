@@ -6,7 +6,7 @@ updated: 2023-07-15
 
 ## 其他站內頁面
 
-- [Stream](/stream/2023)
+- [Stream](/stream/2024)
 - [About](/about/)
 - [Library](/library)
 - [Changelog](/changelog)
