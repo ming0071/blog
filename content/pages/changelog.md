@@ -6,7 +6,7 @@ draft: false
 template: changelog.html
 ---
 
-這裡是「Ming's Blog」的版本更新過程，包含新增、調整、或刪除，每當網站有什麼變化就會在這裡留下紀錄。
+這裡是「Ming's Blog」的版本更新過程，包含 Added、Changed、Removed，每當網站有什麼變化就會在這裡留下紀錄。
 
 以下是版本號定義：
 - 主版號：表示部落格有了大幅度的改版，目前規劃當網站上線後即為 1.0.0；而當把網站建立出我的個人風格後即為 2.0.0。
@@ -16,7 +16,15 @@ template: changelog.html
 以下是依時間倒序排列的 changelogs ，歡迎瀏覽！
 
 ---
-## Ver. 1.1.0   <span class = "muted flex-right">24.01.19</span>
+## Ver. 1.1.0   <span class = "muted flex-right">24.01.22</span>
+
+#### Added
+
+- 發現始終沒辦法讓文章出現在 google 的搜尋結果，查找一番後發現要給 google 認證才會被加入他們的索引，於是添加了相關的描述並提出認證，期待之後通過的那一天。
+- 從 Netlify 增加了一些外掛功能，可以自動的更新 sitemap、並且提交到 google、bing，還有提升網頁載入的速度，共安裝了 3 個新插件。
+
+---
+## Ver. 1.0.1   <span class = "muted flex-right">24.01.19</span>
 
 #### Removed
 
