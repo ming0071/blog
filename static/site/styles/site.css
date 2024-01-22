@@ -186,7 +186,7 @@ h4 {
   border: none;
 }
 summary {
-  font-size: 1.0rem;
+  font-size: 1.2rem;
 }
   pre {
   color: rgb(57, 58, 52);
@@ -322,7 +322,7 @@ a.muted,
 }
 
 .text {
-  font-size: 1.2rem;
+  font-size: 1.0rem;
 }
 .text-color,
 .text-color:link,
