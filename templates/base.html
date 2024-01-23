@@ -9,23 +9,15 @@
 >
   <head>
     <title>Ming's Blog</title>
-    <script type="application/ld+json">
-    {
-      "@context" : "http://schema.org/Blog",
-      "@type" : "WebSite",
-      "name" : "Ming's Blog",
-      "url" : "https://ming-blog.netlify.app/"
-    }
-  </script>
     <meta name="google-site-verification" content="AFurn81nagJsEnNeV8v75F7JVgp6xzq_JEtJeS6xzeU" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
-    <link rel="stylesheet" href="{{ get_url(path="site/styles/site.css",
+    <link rel="stylesheet" href="{{ get_url(path='site/styles/site.css',
     trailing_slash=false,cachebust=true) | safe }}" async>
 
     {% if config.generate_rss %} <link rel="alternate"
-    type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml") }}">
+    type="application/rss+xml" title="RSS" href="{{ get_url(path='rss.xml') }}">
     {% endif %}
     {% block canonical_url %}{% endblock canonical_url %}
     <meta
@@ -101,6 +93,10 @@
   </head>
   <!-- {{ trans(key="label_icon") }} -->
   <body>
+    <div itemscope itemtype="http://schema.org/Blog">
+      <meta itemprop="url" content="https://ming-blog.netlify.app/"/>
+      <meta itemprop="name" content="Ming's Blog"/>
+    </div>
     <section id="top">
       {% block nav_bar -%}
       <nav class="navbar-top">
