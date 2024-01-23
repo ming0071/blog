@@ -33,20 +33,18 @@
     <meta name="author" itemprop="author" content="{{ config.extra.author }}" />
     <meta itemprop="headline" content="{{ config.title }}" />
     <meta itemprop="copyrightYear" content="{{ now() | date(format='%Y') }}" />
-    <link rel="icon" href="{{ get_url(path='site/images/black-cat-36x36.png') }}"
+    <link rel="icon" href="{{ get_url(path='site/images/favicon-32x32.png') }}"
     type="image/x-icon"> 
     <!-- 引用 Noto Sans TC 字體 -->
     <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet"> -->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ get_url(path='site/images/black-cat-36x36.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ get_url(path='site/images/black-cat-36x36.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ get_url(path='site/images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ get_url(path='site/images/favicon-32x32.png') }}">
     <!-- App setting -->
     <link rel="manifest" href="{{ get_url(path='site/images/manifest.json') }}">
-    <!-- 聯邦宇宙 -->
-    <!--link rel="me" href="https://pkm.social/@pj"--> 
     <link rel="preload" as="font">
     <meta name="msapplication-TileColor" content="{{ config.extra.theme_color }}" />
-    <meta name="msapplication-TileImage" content="https://pinchlime-screenshots.s3.ap-northeast-1.amazonaws.com/favicon-32x32_to9pAp.png">
+    <meta name="msapplication-TileImage" content="{{ get_url(path='site/images/favicon-32x32.png') }}">
     <meta name="theme-color" content="{{ config.extra.theme_color }}" />
 
     <!-- Open Graph (OG) 標籤設定 -->
