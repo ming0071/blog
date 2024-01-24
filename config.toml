@@ -52,6 +52,11 @@ google_analytics = ""
 paths = "on"
 taxonomies = "on"
 
+[[plugins]]
+package = "@netlify/plugin-sitemap"
+  [plugins.inputs]
+  uildDir = "."
+
 [translations]
 keywords = "ROS, 程式語言"
 label_all_posts = "[看所有文章 ➞](/blog/)"
