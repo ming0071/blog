@@ -2,7 +2,7 @@
 title: git 基本介紹 
 date: 2023-07-29
 description: 關於使用 git 的基本介紹，包含 add、commit、push、pull、colone，還有 ssh key 的基本說明。
-path: blog/git
+path: blog/git-basic-tutorial
 draft: false
 taxonomies:
   categories: 
