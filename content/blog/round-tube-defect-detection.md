@@ -15,20 +15,20 @@ taxonomies:
 
 專案方法是由工業相機對金屬圓管取像之後，再由 C++ 結合 opencv 函式庫進行後續的影像處理，本篇文章主要對於軟體上影像處理的過程進行說明。<br>
 以下是專案中的圓管的實際照片試例:<br>
-<a href="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/tube.png" data-fancybox data-caption="git-flow">
-  <img src="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/tube.png" loading="lazy" alt="git-flow" width="520"/>
+<a href="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/tube.png" data-fancybox data-caption="tube">
+  <img src="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/tube.png" loading="lazy" alt="tube" width="520"/>
 </a><br>
 程式流程圖:<br>
-<a href="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/circle.png" data-fancybox data-caption="git-flow">
-  <img src="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/circle.png" loading="lazy" alt="git-flow" width="520"/>
+<a href="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/circle.png" data-fancybox data-caption="code-flow">
+  <img src="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/circle.png" loading="lazy" alt="code-flow" width="520"/>
 </a><br>
 
 ## 圖片預處理
 
 第一步讀取經由工業相機拍攝之後的照片，後續經由中值濾波、二值化、開運算等基本影像處理後，接著提取出最外輪廓去除(即最大面積輪廓)，得到僅保留內圓輪廓的效果，確保後續的霍夫測圓可以只抓取內圓的特徵做後續的影像辨識。<br>
 由下圖比較可以發現去除最外輪廓之後可以得到更好的結果。
-<a href="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/pre-process.png" data-fancybox data-caption="git-flow">
-  <img src="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/pre-process.png" loading="lazy" alt="git-flow" width="520"/>
+<a href="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/pre-process.png" data-fancybox data-caption="pre-process">
+  <img src="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/pre-process.png" loading="lazy" alt="pre-process" width="520"/>
 </a><br>
 
 ## 以極座標轉換做輪廓檢測
@@ -40,9 +40,11 @@ taxonomies:
 4. 缺陷特徵二值化
 5. 缺陷特徵輪廓抓取
 6. 反極座標轉換
-<a href="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/process.png" data-fancybox data-caption="git-flow">
-  <img src="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/process.png" loading="lazy" alt="git-flow" width="520"/>
-</a><br>
+
+<a href="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/process.png" data-fancybox data-caption="process">
+  <img src="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/process.png" loading="lazy" alt="process" width="520" />
+</a>
+
 而缺陷的判定就可以藉由計算每個圓內缺陷區域內的像素面積而得，當大於設定的閥值即為 NG、小於設定的閥值即為 OK
 
 ## 實時的讀取影片進行辨識
