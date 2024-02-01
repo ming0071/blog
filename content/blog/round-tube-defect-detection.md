@@ -41,8 +41,8 @@ taxonomies:
 5. 缺陷特徵輪廓抓取
 6. 反極座標轉換
 
-<a href="https://pinchlime-screenshots.s3.ap-northeast-1.amazonaws.com/fancybox_HOCpt7.webp" data-fancybox data-caption="process">
-  <img src="https://pinchlime-screenshots.s3.ap-northeast-1.amazonaws.com/fancybox_HOCpt7.webp" loading="lazy" alt="process" width="520" />
+<a href="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/process.png" data-fancybox data-caption="process">
+  <img src="https://github.com/ming0071/112-1_AOI-final-project/blob/main/docs/process.png" loading="lazy" alt="process" width="520" />
 </a>
 
 而缺陷的判定就可以藉由計算每個圓內缺陷區域內的像素面積而得，當大於設定的閥值即為 NG、小於設定的閥值即為 OK
